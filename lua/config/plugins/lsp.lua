@@ -2,22 +2,29 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
       'saghen/blink.cmp',
       {
         "folke/lazydev.nvim",
         ft = "lua",
         opts = {
           library = {
-            -- See the configuration section for more details
-            -- Load luvit types when the `vim.uv` word is found
             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
           },
         },
       },
     },
+
     config = function()
+      require('mason').setup()
+      require('mason-lspconfig').setup()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+
       require("lspconfig").lua_ls.setup { capabilities = capabilities }
+      require("lspconfig").html.setup { capabilities = capabilities }
+      require("lspconfig").cssls.setup { capabilities = capabilities }
+
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
