@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
+      { out, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -14,20 +14,20 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.runtimepath:prepend(lazypath)
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { "rose-pine/neovim",       name = "rose-pine", config = function() vim.cmd("colorscheme rose-pine") end },
-    -- import your plugins
+    {
+      "rose-pine/neovim",
+      name = "rose-pine",
+      config = function()
+        vim.cmd("colorscheme rose-pine")
+      end,
+    },
     { import = "config.plugins" },
   },
   change_detection = {
-    -- automatically check for config file changes and reload the ui
     enabled = false,
-    notify = false, -- get a notification when changes are found
+    notify = false,
   },
 })
