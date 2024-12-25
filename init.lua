@@ -1,10 +1,9 @@
-print("Config hboleya")
--- plugin manager
-require("config.lazy")
--- Remaps dyeli
-require("config.remap")
 -- Vim opts dyeli
 require("config.set")
+-- Remaps dyeli
+require("config.remap")
+-- plugin manager
+require("config.lazy")
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),

@@ -17,6 +17,7 @@ vim.opt.runtimepath:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    "numToStr/Comment.nvim",
     {
       "rose-pine/neovim",
       name = "rose-pine",
