@@ -3,5 +3,8 @@
         "param-type-mismatch",
         "deprecated",
         "missing-fields"
+    ],
+    "diagnostics.globals": [
+        "vim"
     ]
 }
