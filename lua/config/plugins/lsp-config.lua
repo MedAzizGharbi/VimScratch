@@ -24,6 +24,7 @@ return {
           rust = { "rustfmt", lsp_format = "fallback" },
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettierd", "prettier", stop_after_first = true },
+          cpp = { "clang-format" },
           typescriptreact = { "prettierd", "prettier", stop_after_first = true },
         },
       })
@@ -43,7 +44,7 @@ return {
       lspconfig.rust_analyzer.setup({ capabilities = capabilities })
       lspconfig.emmet_ls.setup({ capabilities = capabilities })
       lspconfig.tailwindcss.setup({ capabilities = capabilities })
-
+      lspconfig.cssls.setup({ capabilities = capabilities })
       -- LSP keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
